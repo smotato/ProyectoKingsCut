@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kings Cut Barbershop</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error": "#ffb4ab",
+                      "primary": "#f2ca50",
+                      "primary-fixed-dim": "#e9c349",
+                      "inverse-on-surface": "#2f3131",
+                      "surface-variant": "#333535",
+                      "on-secondary-fixed-variant": "#474746",
+                      "secondary-container": "#474746",
+                      "secondary-fixed-dim": "#c8c6c5",
+                      "on-tertiary-fixed-variant": "#474646",
+                      "on-surface": "#e2e2e2",
+                      "on-primary-fixed-variant": "#574500",
+                      "tertiary-fixed-dim": "#c8c6c5",
+                      "on-tertiary": "#313030",
+                      "surface-container-low": "#1a1c1c",
+                      "on-primary-fixed": "#241a00",
+                      "on-secondary": "#313030",
+                      "surface-dim": "#121414",
+                      "secondary-fixed": "#e5e2e1",
+                      "on-background": "#e2e2e2",
+                      "on-tertiary-container": "#454545",
+                      "surface-container-highest": "#333535",
+                      "on-error-container": "#ffdad6",
+                      "error-container": "#93000a",
+                      "on-secondary-container": "#b7b5b4",
+                      "on-primary": "#3c2f00",
+                      "outline-variant": "#4d4635",
+                      "tertiary-container": "#b5b2b2",
+                      "primary-fixed": "#ffe088",
+                      "surface-bright": "#38393a",
+                      "inverse-primary": "#735c00",
+                      "outline": "#99907c",
+                      "on-surface-variant": "#d0c5af",
+                      "secondary": "#c8c6c5",
+                      "on-primary-container": "#554300",
+                      "on-tertiary-fixed": "#1c1b1b",
+                      "tertiary-fixed": "#e5e2e1",
+                      "background": "#121414",
+                      "primary-container": "#d4af37",
+                      "surface-container-lowest": "#0c0f0f",
+                      "tertiary": "#d0cecd",
+                      "surface": "#121414",
+                      "inverse-surface": "#e2e2e2",
+                      "surface-container": "#1e2020",
+                      "on-secondary-fixed": "#1c1b1b",
+                      "on-error": "#690005",
+                      "surface-tint": "#e9c349",
+                      "surface-container-high": "#282a2b"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "base": "8px",
+                      "margin-mobile": "20px",
+                      "margin-desktop": "40px",
+                      "gutter-mobile": "16px",
+                      "container-max": "1280px",
+                      "gutter-desktop": "24px"
+              },
+              "fontFamily": {
+                      "headline-lg": [
+                              "Playfair Display"
+                      ],
+                      "display-lg": [
+                              "Playfair Display"
+                      ],
+                      "headline-lg-mobile": [
+                              "Playfair Display"
+                      ],
+                      "headline-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "label-md": [
+                              "Hanken Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "36px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-surface border-b border-surface-variant w-full z-50 sticky top-0 transition-all duration-300">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop h-20 max-w-container-max mx-auto">
+<!-- Brand -->
+<a class="font-headline-lg text-headline-lg text-primary dark:text-primary uppercase tracking-widest hover:opacity-80 transition-opacity" href="#">
+                Kings Cut
+            </a>
+<!-- Navigation Links (Desktop) -->
+<nav class="hidden md:flex items-center gap-8">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#servicios">Servicios</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#agenda">Mi Agenda</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#dashboard">Dashboard</a>
+</nav>
+<!-- Actions -->
+<div class="flex items-center gap-4">
+<a class="hidden md:inline-block font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Login</a>
+<a class="bg-primary-container text-[#000000] font-label-md text-label-md px-6 py-2.5 rounded hover:bg-primary-fixed-dim transition-colors uppercase font-bold tracking-wider" href="#reservar">Reservar</a>
+</div>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-[819px] flex items-center justify-center overflow-hidden">
+<!-- Background Image -->
+<div class="absolute inset-0 z-0">
+<img alt="Hero Background" class="w-full h-full object-cover object-center opacity-40 mix-blend-luminosity" data-alt="A luxurious, high-end barber shop interior bathed in moody, cinematic lighting. Dark wood paneled walls contrast with gleaming vintage leather barber chairs and pristine mirrors reflecting warm, golden amber light. The aesthetic is sophisticated modernism, emphasizing elite craftsmanship, prestige, and a sophisticated dark-mode atmosphere with deep blacks and rich gold accents. Focus is on the timeless elegance of the grooming environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiMMl-aEemPR1uc5H0oNt47G298EoqbEWJ7ABVEiUOFKaX1RdCjPC3Cb8z9TjZ1VYGGnF1yHc9EZoxgXaJo4TL4x55sJ3B3pmEZEJEWgr-b1KBnVaL1bNdLeVXt6aU6cqiRlZdTWWNU_vtZPvY5_I4GohAQKLZt3hI4s28T2-3CYvQnk8zGvoD9klkXzn6b2FLI9xfy4n9tMg2G9S8cMjU7P__ddRu4BhGJn2B_SA9y10dvIORG4BLIauYnpnTGNcNBXBwKRntYXo"/>
+<!-- Gradient Overlay for depth -->
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent"></div>
+</div>
+<div class="relative z-10 text-center px-margin-mobile md:px-margin-desktop max-w-4xl mx-auto flex flex-col items-center">
+<span class="font-label-md text-label-md text-primary tracking-widest uppercase mb-4 block">Elite Craftsmanship</span>
+<h1 class="font-display-lg text-display-lg text-on-surface mb-6 leading-tight">
+                    El Arte de la <br/> <span class="text-primary italic">Precisión</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-2xl">
+                    Experimenta el pináculo del aseo masculino en un entorno diseñado para el caballero moderno. Precisión, lujo y estilo inigualable.
+                </p>
+<a class="bg-primary-container text-[#000000] font-label-md text-label-md px-8 py-4 rounded hover:bg-primary-fixed-dim transition-all uppercase font-bold tracking-widest shadow-[0px_20px_40px_rgba(0,0,0,0.8)] hover:-translate-y-1" href="#reservar">
+                    Reservar Cita
+                </a>
+</div>
+</section>
+<!-- Services Section (Bento Grid) -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto" id="servicios">
+<div class="mb-16 md:flex justify-between items-end">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Nuestros Servicios</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Diseñados para elevar tu imagen.</p>
+</div>
+<a class="hidden md:inline-flex items-center gap-2 font-label-md text-label-md text-primary hover:text-primary-fixed-dim transition-colors mt-4 md:mt-0" href="#">
+                    Ver todos los servicios <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Service Card 1 -->
+<div class="group relative bg-[#1A1A1A] rounded-[16px] border border-surface-variant hover:border-primary transition-colors duration-300 overflow-hidden flex flex-col h-full">
+<div class="h-48 overflow-hidden">
+<img alt="Corte de Cabello" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 mix-blend-luminosity group-hover:opacity-80" data-alt="Close up of a skilled barber executing a precise fade haircut on a client. The scene is captured with sharp focus on the clippers and the crisp hairline, set against a dark, sophisticated background. Warm, directional lighting highlights the texture of the hair and the metallic gleam of the tools, embodying a premium, masculine aesthetic aligned with a luxury dark-mode design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDncn3rUVOepFahYG8OY9zAkSMlYkyB4LTBDc5F1nSYLEufMrjsEyY4kfFaWBHk-l6GeBP1PufGDtGlDu7ieSyr9xBIs3ZZNl3o3SvAsbBxOEbvRPjUp_OJUZNcVEUCHomQql3T2Hmsd2LPNyrYjXPaRjCnKcWCQEZHnmy4Y_cB34G7PxEX4MP_13mfkdN3fD-2PUM4FG6ZqRBvsBNhxp49xresia2pAP8hSY589YngHUW9rSYxLINnKZD1cobnFXBWoKBHS4vTDqQ"/>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline-md text-headline-md text-on-surface">Corte de Cabello</h3>
+<span class="font-label-md text-label-md text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20">$35</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant flex-grow mb-6">Corte clásico o moderno, ejecutado con precisión milimétrica. Incluye lavado, peinado y asesoría de imagen.</p>
+<button class="w-full text-center font-label-md text-label-md text-primary border border-surface-variant py-3 rounded hover:border-primary hover:bg-[#252525] transition-all uppercase tracking-wider">
+                            Seleccionar
+                        </button>
+</div>
+</div>
+<!-- Service Card 2 -->
+<div class="group relative bg-[#1A1A1A] rounded-[16px] border border-surface-variant hover:border-primary transition-colors duration-300 overflow-hidden flex flex-col h-full">
+<div class="h-48 overflow-hidden">
+<img alt="Barba" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60 mix-blend-luminosity group-hover:opacity-80" data-alt="A macro shot of a straight razor shaving a perfectly sculpted beard. The shaving cream contrasts with the dark, rich skin tones and the sharp steel of the blade. The lighting is cinematic, casting deep shadows that emphasize the jawline and the meticulous grooming process, fitting perfectly within a high-end, dark-themed barbershop aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0kFZi4UbhANN-siMO77uZmBwzjOS8-F5h92U2slKlcC9OXWF8nPiJkRb90PhmqzJ2CnqR0_Crc80zjR7l4C4WYBzmREVbRzN0EiA7936i1VMH6r_ROdMN6XWPA_BakuBLjykLeofIb2LrljZv1nBgbhd51gZOdhv6n_w9i6kkJcFZVaGcIboiYIyPlAyUnH1R9X9EVb8aMU2EznY59RGEyA50nwp8XW0noyHMfCUiM5MI5gJoF-lA-oIWpAYXK1OLcMKfB8u-cJ4"/>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline-md text-headline-md text-on-surface">Barba</h3>
+<span class="font-label-md text-label-md text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20">$25</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant flex-grow mb-6">Alineación, recorte y perfilado con navaja. Ritual con toalla caliente, aceites esenciales y masaje facial relajante.</p>
+<button class="w-full text-center font-label-md text-label-md text-primary border border-surface-variant py-3 rounded hover:border-primary hover:bg-[#252525] transition-all uppercase tracking-wider">
+                            Seleccionar
+                        </button>
+</div>
+</div>
+<!-- Service Card 3 (Premium) -->
+<div class="group relative bg-[#1A1A1A] rounded-[16px] border border-primary/50 hover:border-primary transition-colors duration-300 overflow-hidden flex flex-col h-full shadow-[0_0_30px_rgba(212,175,55,0.05)]">
+<div class="absolute top-4 right-4 z-10 bg-primary-container text-[#000000] text-xs font-bold px-3 py-1 rounded-full tracking-wider uppercase">
+                        Popular
+                    </div>
+<div class="h-48 overflow-hidden relative">
+<div class="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] to-transparent z-10"></div>
+<img alt="Combo Imperial" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-70 mix-blend-luminosity group-hover:opacity-90" data-alt="A lifestyle portrait of a distinguished gentleman relaxing in a vintage barber chair, looking exceptionally sharp with a fresh haircut and perfectly groomed beard. The composition is elegant, shot from a low angle to convey prestige. The background is softly out of focus, revealing the luxurious, dimly lit ambiance of an elite gentleman's grooming lounge with gold accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUteAFsDfX0tnEzn1S4nsTHqJlzgUQ_wDKIUjQYjkSIq9hfqa3f8vEGxEA5yvwQcnV6NYnZjc1DCe-eHyOQvKuDk_0q-qInyhcZm0pDEd69PCiGji2lj178Drvyf0ToPX9S5oQ13CgWc0NJj65mszt0jSIagHUgq9UEQV7bjF6ejpYK_A7Nhr5WGf7Uz4luZYAWWtZVCVSSlule67bmt6G9duVA76RXolZGsC_FYf3Rha8lojg4tVeoAASu1w8B6u10C88Z7JcwsI"/>
+</div>
+<div class="p-6 flex flex-col flex-grow relative z-20 -mt-8">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline-md text-headline-md text-primary">Combo Imperial</h3>
+<span class="font-label-md text-label-md text-primary bg-primary/20 px-3 py-1 rounded-full border border-primary/40">$55</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant flex-grow mb-6">La experiencia completa. Corte de cabello Premium, ritual de barba completo, mascarilla facial negra y bebida de cortesía.</p>
+<button class="w-full text-center bg-primary text-[#000000] font-label-md text-label-md py-3 rounded hover:bg-primary-fixed-dim transition-all uppercase tracking-wider font-bold">
+                            Seleccionar
+                        </button>
+</div>
+</div>
+</div>
+<div class="mt-8 text-center md:hidden">
+<a class="inline-flex items-center gap-2 font-label-md text-label-md text-primary border-b border-primary pb-1" href="#">
+                    Ver todos los servicios <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span>
+</a>
+</div>
+</section>
+<!-- Team Section (Asymmetric Layout) -->
+<section class="py-24 bg-[#0c0f0f] relative border-t border-surface-variant">
+<div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="mb-16">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Nuestros Barberos</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl">Maestros de su oficio. Cada miembro de nuestro equipo aporta años de experiencia y un compromiso inquebrantable con la excelencia.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+<!-- Master Barber (Featured) -->
+<div class="md:col-span-7 group relative">
+<div class="relative rounded-[16px] overflow-hidden aspect-[4/3] md:aspect-[16/9]">
+<img alt="Marcus - Master Barber" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="A striking portrait of a master barber standing confidently with arms crossed in his shop. He wears a dark, stylish apron over a crisp shirt. The lighting is moody and dramatic, highlighting his focused expression and the sleek tools of his trade nearby. The scene exudes authority, craftsmanship, and the sophisticated prestige of a high-end grooming establishment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWt502CZAFpsZ2gR3zL5qmPg3P3HfMnKpRS0OM_FH46Os9ewHYS9uN4F52P8N19XZviFhdCZCXTlcb5yBzxc0pVo-LM6C7ElHGVqrpBzgjXpyMTHyU57Uj0PAZ3ihvXEuvXQLYr4GWoeZSI2bbP1H1stupL87eM_Fmsxh_xSN41IHPoSHNfAchICEzi59qq6VETiSnHPzrjoInT8M_SgCWWdgkma_AU8DO4eFaUeirEdiWQBhKzsFY4kKE5M-XsTvYG0hCtHQjD1E"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#0c0f0f] via-transparent to-transparent opacity-90"></div>
+<div class="absolute bottom-0 left-0 p-8">
+<span class="font-label-md text-label-md text-primary tracking-widest uppercase mb-2 block">Master Barber</span>
+<h3 class="font-display-lg text-display-lg text-on-surface mb-1">Alejandro</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Especialista en Fades y Diseño de Barba</p>
+</div>
+</div>
+</div>
+<!-- Secondary Barbers -->
+<div class="md:col-span-5 flex flex-col gap-8">
+<div class="flex gap-6 items-center group">
+<div class="w-24 h-24 rounded-full overflow-hidden shrink-0 border-2 border-surface-variant group-hover:border-primary transition-colors">
+<img alt="Barber 2" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="A close-up portrait of a stylish young male barber looking directly at the camera. The background is a softly blurred dark interior of a barbershop. He has a precise haircut and conveys a sense of modern, edgy professionalism fitting for a luxury grooming brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfmZy1FOgq6XblPGTRe3VmyfnH8xVU1JmGsY3jwQfeLFFiYitYswEcroW8TOiKc4LoJLPVAP8Dj0BS9v48Ujnp4rPjf0IEVo9JXdu3tjVeRTv-hh0GNeifRiZD_mMp1IFUDMGfBGs18Eu5ferkRHes2SzGpH1B4NVm09PwziaUu5uwMrbOs1f_am2Z8S3a3vBWQFGPlrrI6V2Ego1A3xdC5zVlTklvsscW1X7kbQb23cjGfMgA10SOnPef89TbkraBVPl-yaW4gFA"/>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface">Mateo</h4>
+<p class="font-body-sm text-on-surface-variant mb-2">Cortes Clásicos &amp; Tijera</p>
+<a class="font-label-md text-label-md text-primary hover:underline text-sm uppercase tracking-wider" href="#">Agendar con Mateo</a>
+</div>
+</div>
+<div class="flex gap-6 items-center group">
+<div class="w-24 h-24 rounded-full overflow-hidden shrink-0 border-2 border-surface-variant group-hover:border-primary transition-colors">
+<img alt="Barber 3" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="Portrait of a serious, experienced barber with a neat beard, viewed in profile against a dark, textured wall. The lighting emphasizes the contours of his face and his professional demeanor, aligning with an aesthetic of elite craftsmanship and sophisticated modernism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA801XogIr9Sw5edw2-8XjErVvjPrFHy3YyK7q5RuNiowy4-CEPNrMoXgYw7VJ7E2MengxUsYkeItmTvUySGsUUkfnWph2ExUyfGgBdMh_tZ8inyOJIQQJw4VGHWMcJZ2t9l1TzYVr-A5-nQe80tAL8wa39NOLtb7iQbWAxaMUns60BBrq_LClF3Xk-gWMjWKzgboW7a5tJQqLg9sYTgtvSGo1BPXoVPXBMD4mdoPSAuN44Qau2mVDrhw1gW9c5a4Nab6VjujOQZz4"/>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface">Javier</h4>
+<p class="font-body-sm text-on-surface-variant mb-2">Estilos Urbanos &amp; Colorimetría</p>
+<a class="font-label-md text-label-md text-primary hover:underline text-sm uppercase tracking-wider" href="#">Agendar con Javier</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Booking Teaser (3-Step Process) -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto relative" id="reservar">
+<div class="bg-[#1A1A1A] rounded-[24px] border border-surface-variant p-8 md:p-16 relative overflow-hidden">
+<!-- Subtle background pattern/gradient -->
+<div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-surface-variant/20 to-transparent pointer-events-none"></div>
+<div class="text-center max-w-2xl mx-auto mb-16 relative z-10">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Asegura tu Lugar</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Reservar tu cita es un proceso rápido y sencillo. No dejes tu estilo al azar.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 relative z-10">
+<!-- Step 1 -->
+<div class="text-center group">
+<div class="w-16 h-16 mx-auto rounded-full bg-surface-container flex items-center justify-center mb-6 border border-surface-variant group-hover:border-primary group-hover:bg-[#252525] transition-all">
+<span class="material-symbols-outlined text-primary text-3xl">content_cut</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-2">1. Elige tu Servicio</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Selecciona el tratamiento que necesitas hoy.</p>
+</div>
+<!-- Step 2 -->
+<div class="text-center group relative">
+<!-- Connector Line (Desktop) -->
+<div class="hidden md:block absolute top-8 -left-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-surface-variant to-transparent -z-10"></div>
+<div class="w-16 h-16 mx-auto rounded-full bg-surface-container flex items-center justify-center mb-6 border border-surface-variant group-hover:border-primary group-hover:bg-[#252525] transition-all">
+<span class="material-symbols-outlined text-primary text-3xl">calendar_today</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-2">2. Selecciona Fecha</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Encuentra el horario que mejor se adapte a ti.</p>
+</div>
+<!-- Step 3 -->
+<div class="text-center group relative">
+<!-- Connector Line (Desktop) -->
+<div class="hidden md:block absolute top-8 -left-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-surface-variant to-transparent -z-10"></div>
+<div class="w-16 h-16 mx-auto rounded-full bg-surface-container flex items-center justify-center mb-6 border border-surface-variant group-hover:border-primary group-hover:bg-[#252525] transition-all">
+<span class="material-symbols-outlined text-primary text-3xl">check_circle</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-2">3. Confirma</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Recibe tu confirmación al instante.</p>
+</div>
+</div>
+<div class="text-center relative z-10">
+<a class="inline-block bg-primary text-[#000000] font-label-md text-label-md px-10 py-4 rounded hover:bg-primary-fixed-dim transition-all uppercase font-bold tracking-widest shadow-[0px_10px_20px_rgba(212,175,55,0.2)] hover:-translate-y-1" href="#">
+                        Iniciar Reserva
+                    </a>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-dim dark:bg-surface-dim border-t border-surface-variant mt-12">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-12 max-w-container-max mx-auto gap-base">
+<div class="text-center md:text-left mb-6 md:mb-0">
+<a class="font-headline-md text-headline-md text-primary uppercase tracking-widest block mb-2" href="#">
+                    Kings Cut
+                </a>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    © 2024 Kings Cut Barber Shop. Elite Craftsmanship.
+                </p>
+</div>
+<nav class="flex flex-wrap justify-center gap-6">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:underline transition-all" href="#">Instagram</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:underline transition-all" href="#">Facebook</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:underline transition-all" href="#">WhatsApp</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:underline transition-all" href="#">Contact Us</a>
+</nav>
+</div>
+</footer>
+</body></html>

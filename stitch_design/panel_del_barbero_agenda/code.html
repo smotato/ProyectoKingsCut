@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kings Cut - Barber Dashboard / Agenda</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Hanken+Grotesk:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error": "#ffb4ab",
+                    "primary": "#f2ca50",
+                    "primary-fixed-dim": "#e9c349",
+                    "inverse-on-surface": "#2f3131",
+                    "surface-variant": "#333535",
+                    "on-secondary-fixed-variant": "#474746",
+                    "secondary-container": "#474746",
+                    "secondary-fixed-dim": "#c8c6c5",
+                    "on-tertiary-fixed-variant": "#474646",
+                    "on-surface": "#e2e2e2",
+                    "on-primary-fixed-variant": "#574500",
+                    "tertiary-fixed-dim": "#c8c6c5",
+                    "on-tertiary": "#313030",
+                    "surface-container-low": "#1a1c1c",
+                    "on-primary-fixed": "#241a00",
+                    "on-secondary": "#313030",
+                    "surface-dim": "#121414",
+                    "secondary-fixed": "#e5e2e1",
+                    "on-background": "#e2e2e2",
+                    "on-tertiary-container": "#454545",
+                    "surface-container-highest": "#333535",
+                    "on-error-container": "#ffdad6",
+                    "error-container": "#93000a",
+                    "on-secondary-container": "#b7b5b4",
+                    "on-primary": "#3c2f00",
+                    "outline-variant": "#4d4635",
+                    "tertiary-container": "#b5b2b2",
+                    "primary-fixed": "#ffe088",
+                    "surface-bright": "#38393a",
+                    "inverse-primary": "#735c00",
+                    "outline": "#99907c",
+                    "on-surface-variant": "#d0c5af",
+                    "secondary": "#c8c6c5",
+                    "on-primary-container": "#554300",
+                    "on-tertiary-fixed": "#1c1b1b",
+                    "tertiary-fixed": "#e5e2e1",
+                    "background": "#121414",
+                    "primary-container": "#d4af37",
+                    "surface-container-lowest": "#0c0f0f",
+                    "tertiary": "#d0cecd",
+                    "surface": "#121414",
+                    "inverse-surface": "#e2e2e2",
+                    "surface-container": "#1e2020",
+                    "on-secondary-fixed": "#1c1b1b",
+                    "on-error": "#690005",
+                    "surface-tint": "#e9c349",
+                    "surface-container-high": "#282a2b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "8px",
+                    "margin-mobile": "20px",
+                    "margin-desktop": "40px",
+                    "gutter-mobile": "16px",
+                    "container-max": "1280px",
+                    "gutter-desktop": "24px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Playfair Display"],
+                    "display-lg": ["Playfair Display"],
+                    "headline-lg-mobile": ["Playfair Display"],
+                    "headline-md": ["Hanken Grotesk"],
+                    "body-md": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "label-md": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: #121212;
+            color: #e2e2e2;
+        }
+        /* Custom scrollbar for timeline */
+        .timeline-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .timeline-scroll::-webkit-scrollbar-track {
+            background: #121414;
+        }
+        .timeline-scroll::-webkit-scrollbar-thumb {
+            background: #333535;
+            border-radius: 4px;
+        }
+        .timeline-scroll::-webkit-scrollbar-thumb:hover {
+            background: #474746;
+        }
+    </style>
+</head>
+<body class="bg-background flex h-screen overflow-hidden text-on-surface font-body-md">
+<!-- SideNavBar (Shared Component) -->
+<aside class="hidden md:flex bg-surface-container-lowest dark:bg-surface-container-lowest text-primary dark:text-primary fixed left-0 top-0 h-full w-[280px] border-r border-surface-variant shadow-md flex-col py-8 space-y-4 z-50">
+<div class="px-6 mb-8">
+<h1 class="font-headline-md text-headline-md text-primary uppercase tracking-widest">Kings Cut</h1>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1">Admin Panel</p>
+</div>
+<nav class="flex-1 flex flex-col gap-2 w-full font-label-md text-label-md">
+<!-- Dashboard -->
+<a class="text-on-surface-variant flex items-center gap-4 px-6 py-4 hover:bg-surface-container-low hover:text-primary transition-all duration-300 group" href="#">
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="dashboard">dashboard</span>
+<span class="group-hover:translate-x-1 transition-transform">Dashboard</span>
+</a>
+<!-- Citas (Active State based on Intent: Agenda) -->
+<a class="border-l-2 border-primary bg-surface-container text-on-surface flex items-center gap-4 px-6 py-4 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span>Citas</span>
+</a>
+<!-- Barberos -->
+<a class="text-on-surface-variant flex items-center gap-4 px-6 py-4 hover:bg-surface-container-low hover:text-primary transition-all duration-300 group" href="#">
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="content_cut">content_cut</span>
+<span class="group-hover:translate-x-1 transition-transform">Barberos</span>
+</a>
+<!-- Servicios -->
+<a class="text-on-surface-variant flex items-center gap-4 px-6 py-4 hover:bg-surface-container-low hover:text-primary transition-all duration-300 group" href="#">
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="dry_cleaning">dry_cleaning</span>
+<span class="group-hover:translate-x-1 transition-transform">Servicios</span>
+</a>
+<!-- Reportes -->
+<a class="text-on-surface-variant flex items-center gap-4 px-6 py-4 hover:bg-surface-container-low hover:text-primary transition-all duration-300 group" href="#">
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="bar_chart">bar_chart</span>
+<span class="group-hover:translate-x-1 transition-transform">Reportes</span>
+</a>
+</nav>
+<div class="px-6 mt-auto">
+<button class="flex items-center gap-3 text-on-surface-variant hover:text-error transition-colors w-full py-3 font-label-md text-label-md">
+<span class="material-symbols-outlined">logout</span>
+                Cerrar Sesión
+            </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-[280px] h-full overflow-y-auto timeline-scroll bg-surface">
+<!-- Mobile Header (Visible only on small screens) -->
+<header class="md:hidden flex justify-between items-center p-margin-mobile border-b border-surface-variant bg-surface-container-lowest sticky top-0 z-40">
+<div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary uppercase">Kings Cut</h1>
+<p class="font-label-md text-label-md text-on-surface-variant">Admin Panel</p>
+</div>
+<button class="text-primary p-2 rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<div class="p-margin-mobile md:p-margin-desktop max-w-container-max mx-auto space-y-8">
+<!-- Page Header & Stats Bento Grid -->
+<section class="space-y-6">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Agenda del Día</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-1" id="current-date">Jueves, 24 de Octubre, 2024</p>
+</div>
+<button class="bg-primary text-[#000000] font-label-md text-label-md uppercase px-6 py-3 rounded uppercase font-bold hover:bg-primary-fixed-dim transition-colors flex items-center gap-2 w-fit">
+<span class="material-symbols-outlined">add</span>
+                        Nueva Cita
+                    </button>
+</div>
+<!-- Stats Cards (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Stat Card 1 -->
+<div class="bg-[#1A1A1A] border border-[#333333] rounded-2xl p-6 relative overflow-hidden group hover:border-primary transition-colors duration-300">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-6xl text-primary" data-icon="groups">groups</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-2">Citas hoy</p>
+<div class="flex items-baseline gap-3">
+<span class="font-display-lg text-display-lg text-primary">12</span>
+<span class="font-body-md text-body-md text-tertiary">/ 15 cap.</span>
+</div>
+</div>
+<!-- Stat Card 2 -->
+<div class="bg-[#1A1A1A] border border-[#333333] rounded-2xl p-6 relative overflow-hidden group hover:border-primary transition-colors duration-300">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-6xl text-primary" data-icon="schedule">schedule</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-2">Próxima cita</p>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-on-surface">14:30</span>
+<span class="font-body-md text-body-md text-tertiary">Carlos M. - Fade &amp; Barba</span>
+</div>
+</div>
+<!-- Stat Card 3 -->
+<div class="bg-[#1A1A1A] border border-[#333333] rounded-2xl p-6 relative overflow-hidden group hover:border-primary transition-colors duration-300">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-6xl text-primary" data-icon="payments">payments</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-2">Ingresos estimados</p>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-primary">$450</span>
+<span class="font-body-md text-body-md text-tertiary">USD</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Timeline/Schedule View -->
+<section class="bg-[#1A1A1A] border border-[#333333] rounded-2xl p-6 md:p-8">
+<div class="flex justify-between items-center mb-8 border-b border-surface-variant pb-4">
+<h3 class="font-headline-md text-headline-md text-on-surface">Cronograma</h3>
+<div class="flex gap-2">
+<span class="flex items-center gap-2 font-label-md text-label-md text-on-surface-variant text-xs">
+<div class="w-3 h-3 rounded-full bg-primary opacity-20 border border-primary"></div> Completado
+                        </span>
+<span class="flex items-center gap-2 font-label-md text-label-md text-on-surface-variant text-xs ml-4">
+<div class="w-3 h-3 rounded-full border border-[#333333]"></div> Pendiente
+                        </span>
+</div>
+</div>
+<div class="space-y-6 relative before:absolute before:inset-0 before:ml-12 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-surface-variant">
+<!-- Completed Appointment -->
+<div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+<div class="flex items-center justify-center w-8 h-8 rounded-full border-2 border-primary bg-surface-container-lowest shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-[0_0_10px_rgba(212,175,55,0.2)] z-10">
+<div class="w-3 h-3 bg-primary rounded-full"></div>
+</div>
+<div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-surface-container-low border border-[#333333] p-5 rounded-xl transition-all duration-300 hover:border-primary relative">
+<!-- Time Badge -->
+<div class="absolute top-5 md:-left-24 -left-16 font-label-md text-label-md text-on-surface-variant w-14 text-right">
+                                10:00
+                            </div>
+<div class="flex justify-between items-start mb-3">
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface text-lg">Alejandro Ruiz</h4>
+<p class="font-body-md text-body-md text-primary">Corte Ejecutivo</p>
+</div>
+<span class="px-2 py-1 rounded text-xs font-label-md text-primary border border-primary bg-primary/10">Completado</span>
+</div>
+<div class="flex gap-3 mt-4 pt-4 border-t border-surface-variant">
+<button class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1 text-sm">
+<span class="material-symbols-outlined text-[18px]">visibility</span> Ver detalles
+                                </button>
+</div>
+</div>
+</div>
+<!-- Current/Next Appointment -->
+<div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+<div class="flex items-center justify-center w-8 h-8 rounded-full border-2 border-primary bg-primary shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-[0_0_15px_rgba(212,175,55,0.4)] z-10">
+<div class="w-3 h-3 bg-background rounded-full"></div>
+</div>
+<div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-surface-container border border-primary p-5 rounded-xl transition-all duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.5)] relative">
+<!-- Time Badge -->
+<div class="absolute top-5 md:right-auto md:-left-24 -left-16 font-label-md text-label-md text-primary font-bold w-14 text-right">
+                                14:30
+                            </div>
+<div class="flex justify-between items-start mb-3">
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface text-lg">Carlos Mendoza</h4>
+<p class="font-body-md text-body-md text-primary">Fade &amp; Barba Ritual</p>
+</div>
+<span class="px-2 py-1 rounded text-xs font-label-md text-on-surface border border-[#333333] bg-surface-container-low">Pendiente</span>
+</div>
+<div class="flex flex-wrap gap-2 mt-4 pt-4 border-t border-surface-variant">
+<button class="bg-primary text-[#000000] font-label-md text-label-md px-4 py-2 rounded text-sm hover:bg-primary-fixed-dim transition-colors">
+                                    Completar
+                                </button>
+<button class="bg-transparent border border-primary text-primary font-label-md text-label-md px-4 py-2 rounded text-sm hover:bg-primary/10 transition-colors">
+                                    No asistió
+                                </button>
+<button class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1 text-sm ml-auto">
+<span class="material-symbols-outlined text-[18px]">visibility</span> Detalles
+                                </button>
+</div>
+</div>
+</div>
+<!-- Future Appointment -->
+<div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+<div class="flex items-center justify-center w-8 h-8 rounded-full border-2 border-[#333333] bg-surface-container-lowest shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+<div class="w-3 h-3 bg-transparent rounded-full"></div>
+</div>
+<div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-surface-container-low border border-[#333333] p-5 rounded-xl transition-all duration-300 hover:border-primary relative opacity-80">
+<!-- Time Badge -->
+<div class="absolute top-5 md:-left-24 -left-16 font-label-md text-label-md text-on-surface-variant w-14 text-right">
+                                16:00
+                            </div>
+<div class="flex justify-between items-start mb-3">
+<div>
+<h4 class="font-headline-md text-headline-md text-on-surface text-lg">Roberto Torres</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Tinte y Perfilado</p>
+</div>
+</div>
+<div class="flex gap-3 mt-4 pt-4 border-t border-surface-variant">
+<button class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1 text-sm">
+<span class="material-symbols-outlined text-[18px]">visibility</span> Ver detalles
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom padding for scroll -->
+<div class="h-12"></div>
+</div>
+</main>
+<script>
+        // Simple script to set today's date in a nice format
+        const dateElement = document.getElementById('current-date');
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        const today = new Date();
+        const formattedDate = today.toLocaleDateString('es-ES', options);
+        // Capitalize first letter
+        dateElement.textContent = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
+    </script>
+</body></html>
